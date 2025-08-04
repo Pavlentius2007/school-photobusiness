@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школьный Фотобизнес - Курс для фотографов</title>
+    <meta name="description" content="Научитесь зарабатывать на школьной фотографии. Полный курс от основ до запуска прибыльного бизнеса с готовыми шаблонами и поддержкой.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-camera"></i>
+                    <span>ФотоШкола</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#about">О курсе</a></li>
+                    <li><a href="#program">Программа</a></li>
+                    <li><a href="#pricing">Тарифы</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Научитесь зарабатывать на <span class="highlight">школьной фотографии</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Полный курс для фотографов: от основ до запуска прибыльного бизнеса. 
+                    Готовые шаблоны, контракты и поддержка экспертов.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-text">Выпускников</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50-150к</span>
+                        <span class="stat-text">Средний доход</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-text">Успешных стартов</span>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToSection('pricing')">
+                        <i class="fas fa-play"></i>
+                        Начать обучение
+                    </button>
+                    <button class="btn btn-secondary" onclick="openVideo()">
+                        <i class="fas fa-video"></i>
+                        Смотреть презентацию
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Школьная фотография">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>Почему школьная фотография?</h2>
+                <p>Стабильный доход круглый год с гарантированным потоком клиентов</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Круглогодичный график</h3>
+                    <p>Осень - портреты, зима - подарки, весна - выпускные, лето - мероприятия</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Гарантированные клиенты</h3>
+                    <p>Каждому ребенку ежегодно нужны школьные фотографии</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Высокая прибыльность</h3>
+                    <p>Маржинальность до 70% при минимальных вложениях</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Быстрый старт</h3>
+                    <p>Первый заказ уже через 2 недели после обучения</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="program" id="program">
+        <div class="container">
+            <div class="section-header">
+                <h2>Что вы получите в курсе</h2>
+                <p>8 модулей практических знаний для запуска бизнеса</p>
+            </div>
+            <div class="program-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Основы школьного фотобизнеса</h3>
+                        <p>Особенности ниши, сезонность, анализ рынка и конкурентов</p>
+                        <ul>
+                            <li>Исследование рынка</li>
+                            <li>Планирование сезонности</li>
+                            <li>Анализ конкурентов</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>Организация бизнеса</h3>
+                        <p>Регистрация ИП, бухгалтерия, договоры и юридические аспекты</p>
+                        <ul>
+                            <li>Регистрация ИП/ООО</li>
+                            <li>Готовые шаблоны договоров</li>
+                            <li>Бухгалтерское сопровождение</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Оборудование и техника</h3>
+                        <p>Выбор камер, объективов, освещения для школьной съемки</p>
+                        <ul>
+                            <li>Рекомендации по оборудованию</li>
+                            <li>Настройки камеры</li>
+                            <li>Работа со светом</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Работа с клиентами</h3>
+                        <p>Переговоры со школами, презентации и заключение контрактов</p>
+                        <ul>
+                            <li>Скрипты переговоров</li>
+                            <li>Презентации для школ</li>
+                            <li>Работа с возражениями</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-content">
+                        <h3>Съемочный процесс</h3>
+                        <p>Организация съемок, работа с детьми и оптимизация процесса</p>
+                        <ul>
+                            <li>Планирование съемок</li>
+                            <li>Работа с детьми</li>
+                            <li>Автоматизация процесса</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">06</div>
+                    <div class="timeline-content">
+                        <h3>Обработка и печать</h3>
+                        <p>Постобработка, макетирование и работа с типографиями</p>
+                        <ul>
+                            <li>Быстрая обработка</li>
+                            <li>Готовые шаблоны</li>
+                            <li>Партнерские типографии</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">07</div>
+                    <div class="timeline-content">
+                        <h3>Ценообразование и продажи</h3>
+                        <p>Формирование цен, пакеты услуг и стратегии продаж</p>
+                        <ul>
+                            <li>Калькулятор цен</li>
+                            <li>Пакеты услуг</li>
+                            <li>Upselling стратегии</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">08</div>
+                    <div class="timeline-content">
+                        <h3>Маркетинг и продвижение</h3>
+                        <p>Привлечение клиентов, соцсети и развитие бренда</p>
+                        <ul>
+                            <li>Маркетинговая стратегия</li>
+                            <li>Работа в соцсетях</li>
+                            <li>Партнерские программы</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Выберите свой тариф</h2>
+                <p>Начните обучение уже сегодня с гарантией возврата денег</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Базовый</h3>
+                        <div class="price">
+                            <span class="currency">₽</span>
+                            <span class="amount">29,900</span>
+                        </div>
+                        <p>Для самостоятельного изучения</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Доступ к курсу на 12 месяцев</li>
+                        <li><i class="fas fa-check"></i> 8 модулей обучения</li>
+                        <li><i class="fas fa-check"></i> Готовые шаблоны документов</li>
+                        <li><i class="fas fa-check"></i> Чек-листы и инструкции</li>
+                        <li><i class="fas fa-check"></i> Базовая поддержка</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="selectPlan('basic')">
+                        Выбрать тариф
+                    </button>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Популярный</div>
+                    <div class="pricing-header">
+                        <h3>Стандарт</h3>
+                        <div class="price">
+                            <span class="currency">₽</span>
+                            <span class="amount">49,900</span>
+                        </div>
+                        <p>С поддержкой и обратной связью</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Все из базового тарифа</li>
+                        <li><i class="fas fa-check"></i> Доступ к курсу навсегда</li>
+                        <li><i class="fas fa-check"></i> Закрытый чат с экспертами</li>
+                        <li><i class="fas fa-check"></i> Разбор домашних заданий</li>
+                        <li><i class="fas fa-check"></i> 2 персональные консультации</li>
+                        <li><i class="fas fa-check"></i> Доступ к обновлениям курса</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('standard')">
+                        Выбрать тариф
+                    </button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Премиум</h3>
+                        <div class="price">
+                            <span class="currency">₽</span>
+                            <span class="amount">150,000</span>
+                        </div>
+                        <p>Полное сопровождение до результата</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Все из стандартного тарифа</li>
+                        <li><i class="fas fa-check"></i> Персональный ментор</li>
+                        <li><i class="fas fa-check"></i> 5 персональных консультаций</li>
+                        <li><i class="fas fa-check"></i> Помощь в запуске бизнеса</li>
+                        <li><i class="fas fa-check"></i> Доступ к эксклюзивным материалам</li>
+                        <li><i class="fas fa-check"></i> Гарантия результата</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="selectPlan('premium')">
+                        Выбрать тариф
+                    </button>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p><i class="fas fa-shield-alt"></i> Гарантия возврата денег в течение 30 дней</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Оформление заказа</h3>
+                <button class="modal-close" onclick="closeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="plan-summary">
+                    <h4>Выбранный тариф: <span id="selectedPlanName">Стандарт</span></h4>
+                    <div class="plan-price">₽<span id="selectedPlanPrice">49,900</span></div>
+                </div>
+                <div class="payment-methods">
+                    <h4>Способ оплаты</h4>
+                    <div class="payment-options">
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="card" checked>
+                            <span class="payment-icon"><i class="fas fa-credit-card"></i></span>
+                            <span>Банковская карта</span>
+                        </label>
+                        <label class="payment-option">
+                            <input type="radio" name="payment" value="installment">
+                            <span class="payment-icon"><i class="fas fa-calendar-alt"></i></span>
+                            <span>Рассрочка</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="installment-options" id="installmentOptions" style="display: none;">
+                    <h4>Выберите банк для рассрочки</h4>
+                    <div class="installment-banks">
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="sber">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Sberbank_logo.svg/200px-Sberbank_logo.svg.png" alt="Сбербанк">
+                            <span>Сбербанк</span>
+                        </label>
+                        <label class="bank-option">
+                            <input type="radio" name="bank" value="tinkoff">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Tinkoff_Bank_logo.svg/200px-Tinkoff_Bank_logo.svg.png" alt="Тинькофф">
+                            <span>Тинькофф</span>
+                        </label>
+                    </div>
+                </div>
+                <form class="payment-form" id="paymentForm">
+                    <div class="form-group">
+                        <label for="name">Имя и фамилия</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-lock"></i>
+                        Оплатить
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2>Отзывы наших выпускников</h2>
+                <p>Реальные истории успеха от фотографов, которые прошли обучение</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Анна">
+                        <div>
+                            <h4>Анна Петрова</h4>
+                            <p>Москва</p>
+                        </div>
+                    </div>
+                    <p>"Прошла курс 3 месяца назад. Сейчас работаю с 5 школами, доход 80-120 тысяч в месяц. Все шаблоны и документы из курса использую постоянно!"</p>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Дмитрий">
+                        <div>
+                            <h4>Дмитрий Соколов</h4>
+                            <p>Санкт-Петербург</p>
+                        </div>
+                    </div>
+                    <p>"Отличный курс! Особенно полезны были модули по переговорам со школами и ценообразованию. Первый заказ получил через 2 недели после обучения."</p>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Елена">
+                        <div>
+                            <h4>Елена Козлова</h4>
+                            <p>Екатеринбург</p>
+                        </div>
+                    </div>
+                    <p>"Была в полном восторге от поддержки! Ментор помог составить бизнес-план и найти первые школы. Сейчас зарабатываю 60-90 тысяч в месяц."</p>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Часто задаваемые вопросы</h2>
+                <p>Ответы на популярные вопросы о курсе</p>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Нужен ли опыт в фотографии?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Курс подходит как для начинающих фотографов, так и для опытных. Мы даем все необходимые знания для работы в школьной фотографии, включая технические аспекты.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Сколько времени нужно на обучение?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Курс рассчитан на 2-3 месяца при занятиях 2-3 раза в неделю. Вы можете изучать материалы в своем темпе.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Какое оборудование нужно для старта?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Минимальный набор: зеркальная камера, объектив 50mm или 85mm, вспышка и фон. Подробные рекомендации по оборудованию даем в курсе.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Есть ли гарантия возврата денег?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, мы предоставляем гарантию возврата денег в течение 30 дней, если курс не подошел вам по каким-либо причинам.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        <h3>Помогаете ли с поиском первых клиентов?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В курсе есть модуль по маркетингу и привлечению клиентов. В премиум-тарифе ментор помогает с поиском первых школ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Остались вопросы?</h2>
+                    <p>Свяжитесь с нами любым удобным способом</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Телефон</h4>
+                                <p>+7 (953 862-85-81)</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@fotoschool.ru</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fab fa-telegram"></i>
+                            <div>
+                                <h4>Telegram</h4>
+                                <p>@fotoschool_support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Напишите нам</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Отправить сообщение
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-camera"></i>
+                        <span>ФотоШкола</span>
+                    </div>
+                    <p>Обучаем фотографов зарабатывать на школьной фотографии с 2020 года</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Курс</h4>
+                    <ul>
+                        <li><a href="#about">О курсе</a></li>
+                        <li><a href="#program">Программа</a></li>
+                        <li><a href="#pricing">Тарифы</a></li>
+                        <li><a href="#reviews">Отзывы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Пользовательское соглашение</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Социальные сети</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ФотоШкола. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
