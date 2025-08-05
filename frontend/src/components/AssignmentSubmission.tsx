@@ -28,7 +28,7 @@ interface AssignmentSubmissionProps {
   isReadOnly?: boolean;
 }
 
-const AssignmentSubmission: React.FC<AssignmentSubmissionProps> = ({
+const AssignmentSubmissionComponent: React.FC<AssignmentSubmissionProps> = ({
   assignment,
   submission,
   onSubmit,
@@ -542,4 +542,4 @@ const AssignmentSubmission: React.FC<AssignmentSubmissionProps> = ({
   );
 };
 
-export default AssignmentSubmission; 
+export default AssignmentSubmissionComponent; 

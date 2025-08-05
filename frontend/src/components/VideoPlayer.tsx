@@ -26,7 +26,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   description
 }) => {
   const [videoInfo, setVideoInfo] = useState<VideoInfo | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [progress, setProgress] = useState(0);
@@ -34,13 +33,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const [error, setError] = useState<string | null>(null);
   
   const videoRef = useRef<HTMLVideoElement>(null);
-  const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Парсинг URL для определения типа видео
   useEffect(() => {
     const parseVideoUrl = (url: string): VideoInfo => {
       // YouTube
-      const youtubeRegex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+      const youtubeRegex = /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\s]{11})/;
       const youtubeMatch = url.match(youtubeRegex);
       if (youtubeMatch) {
         return {
@@ -108,8 +106,8 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         setDuration(video.duration);
       };
 
-      const handlePlay = () => setIsPlaying(true);
-      const handlePause = () => setIsPlaying(false);
+      const handlePlay = () => {};
+      const handlePause = () => {};
       const handleEnded = () => {
         setIsCompleted(true);
         onComplete?.();
@@ -140,11 +138,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       
       // YouTube API события
       if (data.event === 'onStateChange') {
-        if (data.info === 1) { // Воспроизведение
-          setIsPlaying(true);
-        } else if (data.info === 2) { // Пауза
-          setIsPlaying(false);
-        } else if (data.info === 0) { // Завершено
+        if (data.info === 0) { // Завершено
           setIsCompleted(true);
           onComplete?.();
         }

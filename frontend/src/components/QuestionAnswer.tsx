@@ -34,7 +34,6 @@ const QuestionAnswer: React.FC<QuestionAnswerProps> = ({
   isReadOnly = false
 }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [attachedFiles, setAttachedFiles] = useState<{ [key: number]: File[] }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Инициализация ответов при загрузке
@@ -98,11 +97,6 @@ const QuestionAnswer: React.FC<QuestionAnswerProps> = ({
       return true;
     });
 
-    setAttachedFiles(prev => ({
-      ...prev,
-      [questionId]: [...(prev[questionId] || []), ...validFiles]
-    }));
-
     setAnswers(prev => prev.map(answer => 
       answer.question_id === questionId 
         ? { ...answer, attached_files: [...(answer.attached_files || []), ...validFiles] }
@@ -111,11 +105,6 @@ const QuestionAnswer: React.FC<QuestionAnswerProps> = ({
   };
 
   const handleFileRemove = (questionId: number, fileIndex: number) => {
-    setAttachedFiles(prev => ({
-      ...prev,
-      [questionId]: prev[questionId]?.filter((_, index) => index !== fileIndex) || []
-    }));
-
     setAnswers(prev => prev.map(answer => 
       answer.question_id === questionId 
         ? { 

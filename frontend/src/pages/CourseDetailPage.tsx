@@ -3,28 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getCourseById, FullCourse as CourseDetailData } from '../data/coursesData';
 import CourseMaterials from '../components/CourseMaterials';
 
-interface CourseModule {
-  id: number;
-  title: string;
-  description: string;
-  duration: string;
-  lessons: CourseLesson[];
-}
-
-interface CourseLesson {
-  id: number;
-  title: string;
-  duration: string;
-  type: 'video' | 'practice' | 'theory';
-}
-
-interface CourseGalleryImage {
-  id: number;
-  url: string;
-  title: string;
-  description?: string;
-}
-
 
 
 const CourseDetailPage: React.FC = () => {
@@ -32,7 +10,7 @@ const CourseDetailPage: React.FC = () => {
   const navigate = useNavigate();
   const [course, setCourse] = useState<CourseDetailData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
 
   const openTelegramConsultation = () => {
     const username = 'Pavlentius2007';
@@ -259,7 +237,7 @@ const CourseDetailPage: React.FC = () => {
                 transition: 'transform 0.3s ease',
                 boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
               }}
-              onClick={() => setSelectedImageIndex(index)}
+              onClick={() => {}}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'scale(1.05)';
               }}

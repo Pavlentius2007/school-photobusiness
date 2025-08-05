@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useSettings } from '../contexts/SettingsContext';
@@ -9,6 +9,7 @@ const Header: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
   const { settings } = useSettings();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -50,296 +51,250 @@ const Header: React.FC = () => {
     }
   };
 
+  // Закрытие мобильного меню при изменении маршрута
+  useEffect(() => {
+    setShowMobileMenu(false);
+    setShowUserMenu(false);
+  }, [location.pathname]);
+
+  // Закрытие меню при клике вне его
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (!target.closest('.mobile-menu') && !target.closest('.mobile-toggle')) {
+        setShowMobileMenu(false);
+      }
+      if (!target.closest('.user-menu') && !target.closest('.user-toggle')) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <header style={{
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      color: 'white',
-      padding: '1rem 2rem',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000,
-      boxShadow: '0 2px 20px rgba(0,0,0,0.1)'
-    }}>
-      <nav style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto'
-      }}>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          <div style={{ 
-            fontSize: '1.5rem', 
-            fontWeight: 'bold',
-            background: 'linear-gradient(45deg, #fff, #f0f0f0)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
-            📸 {settings.siteName}
+    <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white sticky top-0 z-50 shadow-lg">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Логотип */}
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+              📸 {settings.siteName}
+            </div>
+          </Link>
+
+          {/* Десктопная навигация */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link 
+              to="/" 
+              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
+                isActive('/') ? 'opacity-100' : 'opacity-80'
+              }`}
+            >
+              Главная
+            </Link>
+            <Link 
+              to="/courses" 
+              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
+                isActive('/courses') ? 'opacity-100' : 'opacity-80'
+              }`}
+            >
+              Курсы
+            </Link>
+            <Link 
+              to="/about" 
+              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
+                isActive('/about') ? 'opacity-100' : 'opacity-80'
+              }`}
+            >
+              О нас
+            </Link>
+            <Link 
+              to="/payment" 
+              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
+                isActive('/payment') ? 'opacity-100' : 'opacity-80'
+              }`}
+            >
+              Оплата
+            </Link>
           </div>
-        </Link>
-        
-        <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-          <Link 
-            to="/" 
-            style={{ 
-              color: 'white', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              transition: 'opacity 0.3s',
-              opacity: isActive('/') ? 1 : 0.8
-            }}
-          >
-            Главная
-          </Link>
-          <Link 
-            to="/courses" 
-            style={{ 
-              color: 'white', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              transition: 'opacity 0.3s',
-              opacity: isActive('/courses') ? 1 : 0.8
-            }}
-          >
-            Курсы
-          </Link>
-          <Link 
-            to="/about" 
-            style={{ 
-              color: 'white', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              transition: 'opacity 0.3s',
-              opacity: isActive('/about') ? 1 : 0.8
-            }}
-          >
-            О нас
-          </Link>
-          <Link 
-            to="/payment" 
-            style={{ 
-              color: 'white', 
-              textDecoration: 'none', 
-              fontWeight: '500', 
-              transition: 'opacity 0.3s',
-              opacity: isActive('/payment') ? 1 : 0.8
-            }}
-          >
-            Оплата
-          </Link>
-          
-          {isAuthenticated ? (
-            <div style={{ position: 'relative' }}>
-              <button
-                onClick={() => setShowUserMenu(!showUserMenu)}
-                style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  color: 'white',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: '500',
-                  transition: 'all 0.3s',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem'
-                }}
-              >
-                <span>👤</span>
-                <span>{user?.full_name}</span>
-                <span>▼</span>
-              </button>
-              
-              {showUserMenu && (
-                <div 
-                  onClick={(e) => e.stopPropagation()}
-                  style={{
-                    position: 'absolute',
-                    top: '100%',
-                    right: 0,
-                    background: 'white',
-                    borderRadius: '8px',
-                    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
-                    padding: '1rem',
-                    minWidth: '200px',
-                    marginTop: '0.5rem',
-                    zIndex: 1001
-                  }}
+
+          {/* Пользовательское меню (десктоп) */}
+          <div className="hidden md:flex items-center space-x-4">
+            {isAuthenticated ? (
+              <div className="relative user-menu">
+                <button
+                  onClick={() => setShowUserMenu(!showUserMenu)}
+                  className="user-toggle bg-white bg-opacity-10 text-white border border-white border-opacity-30 px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-opacity-20 flex items-center space-x-2"
                 >
-                  <div style={{
-                    padding: '0.5rem 0',
-                    borderBottom: '1px solid #e2e8f0',
-                    marginBottom: '0.5rem'
-                  }}>
-                    <div style={{
-                      fontSize: '14px',
-                      fontWeight: 'bold',
-                      color: '#2d3748'
-                    }}>
-                      {user?.full_name}
+                  <span>👤</span>
+                  <span className="hidden lg:inline">{user?.full_name}</span>
+                  <span>▼</span>
+                </button>
+                
+                {showUserMenu && (
+                  <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl p-4 min-w-48 z-50">
+                    <div className="pb-2 border-b border-gray-200 mb-2">
+                      <div className="text-sm font-bold text-gray-800">
+                        {user?.full_name}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {getRoleDisplayName(user?.role || '')}
+                      </div>
                     </div>
-                    <div style={{
-                      fontSize: '12px',
-                      color: '#718096'
-                    }}>
-                      {getRoleDisplayName(user?.role || '')}
-                    </div>
-                  </div>
-                  
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowUserMenu(false);
-                      const link = getDashboardLink();
-                      try {
-                        navigate(link);
-                      } catch (error) {
-                        console.error('Navigation error:', error);
-                        window.location.href = link;
-                      }
-                    }}
-                    style={{
-                      width: '100%',
-                      background: 'transparent',
-                      color: '#4a5568',
-                      border: 'none',
-                      padding: '0.5rem',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      fontSize: '14px',
-                      transition: 'background 0.3s',
-                      pointerEvents: 'auto'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#f7fafc';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'transparent';
-                    }}
-                  >
-                    📊 Панель управления
-                  </button>
-                  
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowUserMenu(false);
-                      try {
+                    
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        navigate(getDashboardLink());
+                      }}
+                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200"
+                    >
+                      📊 Панель управления
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
                         navigate('/profile');
-                      } catch (error) {
-                        console.error('Navigation error:', error);
-                        window.location.href = '/profile';
-                      }
-                    }}
-                    style={{
-                      width: '100%',
-                      background: 'transparent',
-                      color: '#4a5568',
-                      border: 'none',
-                      padding: '0.5rem',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      fontSize: '14px',
-                      transition: 'background 0.3s',
-                      pointerEvents: 'auto'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#f7fafc';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'transparent';
-                    }}
-                  >
-                    👤 Профиль
+                      }}
+                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200"
+                    >
+                      👤 Профиль
+                    </button>
+                    
+                    <button
+                      onClick={() => {
+                        setShowUserMenu(false);
+                        handleLogout();
+                      }}
+                      className="w-full text-left px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded transition-colors duration-200"
+                    >
+                      🚪 Выйти
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center space-x-3">
+                <Link to="/login">
+                  <button className="bg-transparent text-white border-2 border-white px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-white hover:text-blue-600">
+                    Войти
                   </button>
-                  
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setShowUserMenu(false);
-                      handleLogout();
-                    }}
-                    style={{
-                      width: '100%',
-                      background: 'transparent',
-                      color: '#e53e3e',
-                      border: 'none',
-                      padding: '0.5rem',
-                      borderRadius: '4px',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      fontSize: '14px',
-                      transition: 'background 0.3s',
-                      pointerEvents: 'auto'
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = '#fed7d7';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'transparent';
-                    }}
-                  >
-                    🚪 Выйти
+                </Link>
+                <Link to="/register">
+                  <button className="bg-white text-blue-600 border-none px-4 py-2 rounded-full cursor-pointer font-bold transition-all duration-300 hover:bg-gray-100">
+                    Регистрация
                   </button>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {/* Мобильная кнопка меню */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="mobile-toggle text-white p-2 rounded-md hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+              aria-label="Открыть меню"
+            >
+              <div className="w-6 h-6 flex flex-col justify-center items-center">
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 ${showMobileMenu ? 'rotate-45 translate-y-1' : ''}`}></span>
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 mt-1 ${showMobileMenu ? 'opacity-0' : ''}`}></span>
+                <span className={`block w-5 h-0.5 bg-white transition-all duration-300 mt-1 ${showMobileMenu ? '-rotate-45 -translate-y-1' : ''}`}></span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        {/* Мобильное меню */}
+        <div className={`mobile-menu md:hidden transition-all duration-300 ease-in-out ${showMobileMenu ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          <div className="pb-4 space-y-2">
+            <Link 
+              to="/" 
+              className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
+                isActive('/') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+              }`}
+            >
+              Главная
+            </Link>
+            <Link 
+              to="/courses" 
+              className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
+                isActive('/courses') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+              }`}
+            >
+              Курсы
+            </Link>
+            <Link 
+              to="/about" 
+              className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
+                isActive('/about') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+              }`}
+            >
+              О нас
+            </Link>
+            <Link 
+              to="/payment" 
+              className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
+                isActive('/payment') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+              }`}
+            >
+              Оплата
+            </Link>
+            
+            {/* Мобильное пользовательское меню */}
+            {isAuthenticated ? (
+              <div className="border-t border-white border-opacity-20 pt-4 mt-4">
+                <div className="px-3 py-2 text-sm text-white opacity-80">
+                  {user?.full_name} ({getRoleDisplayName(user?.role || '')})
                 </div>
-              )}
-            </div>
-          ) : (
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <Link to="/login">
-                <button style={{
-                  background: 'transparent',
-                  color: 'white',
-                  border: '2px solid white',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: '500',
-                  transition: 'all 0.3s'
-                }}>
-                  Войти
+                <button
+                  onClick={() => {
+                    setShowMobileMenu(false);
+                    navigate(getDashboardLink());
+                  }}
+                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                >
+                  📊 Панель управления
                 </button>
-              </Link>
-              <Link to="/register">
-                <button style={{
-                  background: 'white',
-                  color: '#667eea',
-                  border: 'none',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '25px',
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                  transition: 'all 0.3s'
-                }}>
-                  Регистрация
+                <button
+                  onClick={() => {
+                    setShowMobileMenu(false);
+                    navigate('/profile');
+                  }}
+                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                >
+                  👤 Профиль
                 </button>
-              </Link>
-            </div>
-          )}
+                <button
+                  onClick={() => {
+                    setShowMobileMenu(false);
+                    handleLogout();
+                  }}
+                  className="w-full text-left px-3 py-3 text-red-200 font-medium rounded-lg hover:bg-red-500 hover:bg-opacity-20 transition-colors duration-200"
+                >
+                  🚪 Выйти
+                </button>
+              </div>
+            ) : (
+              <div className="border-t border-white border-opacity-20 pt-4 mt-4 space-y-2">
+                <Link to="/login">
+                  <button className="w-full bg-transparent text-white border-2 border-white px-4 py-3 rounded-lg cursor-pointer font-medium transition-all duration-300 hover:bg-white hover:text-blue-600">
+                    Войти
+                  </button>
+                </Link>
+                <Link to="/register">
+                  <button className="w-full bg-white text-blue-600 border-none px-4 py-3 rounded-lg cursor-pointer font-bold transition-all duration-300 hover:bg-gray-100">
+                    Регистрация
+                  </button>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </nav>
-      
-      {/* Закрытие меню при клике вне его */}
-      {showUserMenu && (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 999
-          }}
-          onClick={() => setShowUserMenu(false)}
-        />
-      )}
     </header>
   );
 };

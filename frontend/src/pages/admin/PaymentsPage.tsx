@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { mockApiClient } from '../../services/mockApi';
 import { useErrorBoundary } from '../../hooks/useErrorBoundary';
 
@@ -26,7 +26,12 @@ interface NewPayment {
 
 const PaymentsPage: React.FC = () => {
   const { logError, logWarning } = useErrorBoundary('PaymentsPage');
+  
+  const stableLogError = useCallback((message: string, error?: Error, userAction?: string) => {
+    logError(message, error, userAction);
+  }, [logError]);
   const [payments, setPayments] = useState<Payment[]>([]);
+  const hasLoaded = useRef(false);
   const [isLoading, setIsLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,7 +50,6 @@ const PaymentsPage: React.FC = () => {
       const response = await mockApiClient.getPayments();
       setPayments(response.items);
     } catch (error) {
-      logError('Ошибка загрузки платежей', error as Error, 'Load Payments');
       console.error('Ошибка загрузки платежей:', error);
     } finally {
       setIsLoading(false);
@@ -53,7 +57,17 @@ const PaymentsPage: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    loadPayments();
+    if (hasLoaded.current) return;
+    
+    const fetchPayments = async () => {
+      try {
+        await loadPayments();
+        hasLoaded.current = true;
+      } catch (error) {
+        stableLogError('Ошибка загрузки платежей', error as Error, 'Load Payments');
+      }
+    };
+    fetchPayments();
   }, []);
 
   const handleAddPayment = async () => {

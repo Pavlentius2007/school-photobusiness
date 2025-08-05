@@ -1,17 +1,5 @@
 import { useState, useCallback } from 'react';
-import apiService, { 
-  Course, 
-  Module, 
-  Lesson, 
-  Test, 
-  Question, 
-  Assignment, 
-  AssignmentSubmission,
-  TestAttempt,
-  CourseProgress,
-  LessonProgress,
-  User
-} from '../services/api';
+import apiService from '../services/api';
 
 // Типы для состояний API
 export interface ApiState<T> {

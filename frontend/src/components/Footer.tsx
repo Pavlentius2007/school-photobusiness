@@ -5,61 +5,93 @@ const Footer: React.FC = () => {
   const { settings } = useSettings();
 
   return (
-    <footer style={{
-      background: '#2d3748',
-      color: 'white',
-      padding: '3rem 2rem',
-      textAlign: 'center'
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
-          <div>
-            <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+    <footer className="bg-gray-800 text-white py-12 sm:py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {/* О нас */}
+          <div className="text-center md:text-left">
+            <h3 className="text-xl font-bold mb-4">
               📸 {settings.siteName}
             </h3>
-            <p style={{ opacity: 0.8 }}>
+            <p className="text-gray-300 leading-relaxed">
               {settings.siteDescription}
             </p>
           </div>
-          <div>
-            <h4 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+
+          {/* Контакты */}
+          <div className="text-center md:text-left">
+            <h4 className="text-lg font-bold mb-4">
               Контакты
             </h4>
-            <div style={{ opacity: 0.8 }}>
-              <div>📱 +7 953 862-85-81</div>
-              <div>📧 {settings.contactEmail}</div>
-              <div>📍 Москва, ул. Примерная, 123</div>
+            <div className="space-y-2 text-gray-300">
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <span>📱</span>
+                <a 
+                  href="tel:+79538628581" 
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  +7 953 862-85-81
+                </a>
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <span>📧</span>
+                <a 
+                  href={`mailto:${settings.contactEmail}`}
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  {settings.contactEmail}
+                </a>
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <span>📍</span>
+                <span>Москва, ул. Примерная, 123</span>
+              </div>
             </div>
           </div>
-          <div>
-            <h4 style={{ fontSize: '1.125rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+
+          {/* Социальные сети */}
+          <div className="text-center md:text-left">
+            <h4 className="text-lg font-bold mb-4">
               Социальные сети
             </h4>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-              {['📘', '📸', '💼', '📺'].map((icon, index) => (
-                <a key={index} href="javascript:void(0)" style={{
-                  display: 'inline-block',
-                  fontSize: '1.5rem',
-                  opacity: 0.8,
-                  transition: 'opacity 0.3s'
-                }}>
-                  {icon}
-                </a>
+            <div className="flex justify-center md:justify-start space-x-4">
+              {[
+                { icon: '📘', label: 'Facebook', url: '#' },
+                { icon: '📸', label: 'Instagram', url: '#' },
+                { icon: '💼', label: 'LinkedIn', url: '#' },
+                { icon: '📺', label: 'YouTube', url: '#' }
+              ].map((social, index) => (
+                <button 
+                  key={index}
+                  onClick={() => window.open(social.url, '_blank')}
+                  className="text-2xl hover:text-blue-400 transition-colors duration-300 p-2 rounded-full hover:bg-gray-700"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </button>
               ))}
             </div>
           </div>
         </div>
-        <div style={{ 
-          borderTop: '1px solid #4a5568',
-          paddingTop: '2rem',
-          opacity: 0.8
-        }}>
-          © 2024 {settings.siteName}. Все права защищены.
+
+        {/* Нижняя часть */}
+        <div className="border-t border-gray-700 pt-8 text-center">
+          <div className="text-gray-300">
+            <p className="mb-2">
+              © 2024 {settings.siteName}. Все права защищены.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-sm">
+              <a href="/privacy" className="hover:text-white transition-colors duration-300">
+                Политика конфиденциальности
+              </a>
+              <a href="/terms" className="hover:text-white transition-colors duration-300">
+                Условия использования
+              </a>
+              <a href="/support" className="hover:text-white transition-colors duration-300">
+                Поддержка
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

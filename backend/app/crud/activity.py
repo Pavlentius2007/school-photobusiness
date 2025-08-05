@@ -30,7 +30,7 @@ class CRUDActivityLog(CRUDBase[ActivityLog, ActivityLogCreate, ActivityLogCreate
         description: str = None, 
         course_id: int = None, 
         lesson_id: int = None,
-        metadata: dict = None,
+        activity_metadata: dict = None,
         ip_address: str = None,
         user_agent: str = None
     ) -> ActivityLog:
@@ -41,7 +41,7 @@ class CRUDActivityLog(CRUDBase[ActivityLog, ActivityLogCreate, ActivityLogCreate
             description=description,
             course_id=course_id,
             lesson_id=lesson_id,
-            metadata=metadata,
+            activity_metadata=activity_metadata,
             ip_address=ip_address,
             user_agent=user_agent
         )

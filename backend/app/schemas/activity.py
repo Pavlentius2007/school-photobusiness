@@ -8,7 +8,7 @@ from app.models.activity import ActivityType, NotificationType, NotificationStat
 class ActivityLogBase(BaseModel):
     activity_type: Optional[ActivityType] = None
     description: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    activity_metadata: Optional[Dict[str, Any]] = None
     ip_address: Optional[str] = None
     user_agent: Optional[str] = None
 
@@ -43,7 +43,7 @@ class NotificationBase(BaseModel):
     message: Optional[str] = None
     notification_type: Optional[NotificationType] = NotificationType.SYSTEM
     status: Optional[NotificationStatus] = NotificationStatus.PENDING
-    metadata: Optional[Dict[str, Any]] = None
+    notification_metadata: Optional[Dict[str, Any]] = None
 
 
 class NotificationCreate(NotificationBase):

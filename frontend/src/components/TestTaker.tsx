@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 interface Question {
   id: number;
@@ -97,7 +97,28 @@ const TestTaker: React.FC<TestTakerProps> = ({
     if (!startTime && !isReadOnly && test.time_limit_minutes) {
       setStartTime(new Date());
     }
-  }, [isReadOnly, test.time_limit_minutes]);
+  }, [isReadOnly, test.time_limit_minutes, startTime]);
+
+  const handleAutoSubmit = useCallback(async () => {
+    if (isSubmitting) return;
+    
+    setIsSubmitting(true);
+    try {
+      const timeSpent = startTime ? Math.round((new Date().getTime() - startTime.getTime()) / 60000) : 0;
+      
+      const newAttempt: TestAttempt = {
+        test_id: test.id,
+        answers: answers,
+        time_spent_minutes: timeSpent
+      };
+
+      await onSubmit(newAttempt);
+    } catch (error) {
+      console.error('Ошибка при автоматической отправке теста:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }, [isSubmitting, startTime, test.id, answers, onSubmit]);
 
   const handleTextAnswerChange = (questionId: number, value: string) => {
     setAnswers(prev => prev.map(answer => 
@@ -161,27 +182,6 @@ const TestTaker: React.FC<TestTakerProps> = ({
           }
         : answer
     ));
-  };
-
-  const handleAutoSubmit = async () => {
-    if (isSubmitting) return;
-    
-    setIsSubmitting(true);
-    try {
-      const timeSpent = startTime ? Math.round((new Date().getTime() - startTime.getTime()) / 60000) : 0;
-      
-      const newAttempt: TestAttempt = {
-        test_id: test.id,
-        answers: answers,
-        time_spent_minutes: timeSpent
-      };
-
-      await onSubmit(newAttempt);
-    } catch (error) {
-      console.error('Ошибка при автоматической отправке теста:', error);
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   const handleSubmit = async () => {

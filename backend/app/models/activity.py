@@ -30,7 +30,7 @@ class ActivityLog(Base, BaseModel):
     
     activity_type = Column(Enum(ActivityType), nullable=False)
     description = Column(Text, nullable=True)
-    metadata = Column(JSON, nullable=True)  # Дополнительные данные в JSON формате
+    activity_metadata = Column(JSON, nullable=True)  # Дополнительные данные в JSON формате
     ip_address = Column(String(45), nullable=True)
     user_agent = Column(Text, nullable=True)
     
@@ -53,7 +53,7 @@ class Notification(Base, BaseModel):
     status = Column(Enum(NotificationStatus), default=NotificationStatus.PENDING, nullable=False)
     sent_at = Column(DateTime, nullable=True)
     read_at = Column(DateTime, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    notification_metadata = Column(JSON, nullable=True)
     
     # Внешние ключи
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
