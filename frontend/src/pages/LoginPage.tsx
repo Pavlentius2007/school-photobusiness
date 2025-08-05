@@ -3,8 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 
 const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@sianoro.ru');
+  const [password, setPassword] = useState('admin123');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   
@@ -20,14 +20,13 @@ const LoginPage: React.FC = () => {
       await login(email, password);
       
       // Определяем куда перенаправить пользователя в зависимости от роли
-      const userRole = email.split('@')[0]; // Простая логика для тестовых аккаунтов
       let redirectPath = '/dashboard';
       
-      if (userRole === 'admin') {
+      if (email === 'admin@sianoro.ru') {
         redirectPath = '/admin';
-      } else if (userRole === 'curator') {
+      } else if (email === 'anna@sianoro.ru' || email === 'maria@sianoro.ru') {
         redirectPath = '/curator';
-      } else if (userRole === 'student') {
+      } else {
         redirectPath = '/student';
       }
       
@@ -244,7 +243,7 @@ const LoginPage: React.FC = () => {
           }}>
             <button
               onClick={() => {
-                setEmail('admin@example.com');
+                setEmail('admin@sianoro.ru');
                 setPassword('admin123');
               }}
               style={{
@@ -259,12 +258,12 @@ const LoginPage: React.FC = () => {
                 transition: 'all 0.3s ease'
               }}
             >
-              👑 Админ (admin@example.com)
+              👑 Админ (admin@sianoro.ru)
             </button>
             <button
               onClick={() => {
-                setEmail('curator@example.com');
-                setPassword('curator123');
+                setEmail('anna@sianoro.ru');
+                setPassword('anna123');
               }}
               style={{
                 background: 'linear-gradient(135deg, #ed8936 0%, #dd6b20 100%)',
@@ -278,12 +277,12 @@ const LoginPage: React.FC = () => {
                 transition: 'all 0.3s ease'
               }}
             >
-              📚 Куратор (curator@example.com)
+              📚 Куратор (anna@sianoro.ru)
             </button>
             <button
               onClick={() => {
-                setEmail('student@example.com');
-                setPassword('student123');
+                setEmail('elena@sianoro.ru');
+                setPassword('elena123');
               }}
               style={{
                 background: 'linear-gradient(135deg, #48bb78 0%, #38a169 100%)',
@@ -297,7 +296,7 @@ const LoginPage: React.FC = () => {
                 transition: 'all 0.3s ease'
               }}
             >
-              👨‍🎓 Студент (student@example.com)
+              👨‍🎓 Студент (elena@sianoro.ru)
             </button>
           </div>
           <p style={{

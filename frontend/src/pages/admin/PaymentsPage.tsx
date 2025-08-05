@@ -91,7 +91,7 @@ const PaymentsPage: React.FC = () => {
     };
 
     // В реальном приложении здесь был бы API вызов
-    setPayments(prev => [payment, ...prev]);
+    setPayments((prev: Payment[]) => [payment, ...prev]);
     setShowAddModal(false);
     setNewPayment({
       user_name: '',
@@ -105,7 +105,7 @@ const PaymentsPage: React.FC = () => {
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setNewPayment(prev => ({ ...prev, receipt_file: file }));
+      setNewPayment((prev: NewPayment) => ({ ...prev, receipt_file: file }));
     }
   };
 
@@ -156,7 +156,7 @@ const PaymentsPage: React.FC = () => {
   };
 
   // Фильтрация платежей
-  const filteredPayments = payments.filter(payment => {
+  const filteredPayments = payments.filter((payment: Payment) => {
     const matchesFilter = filter === 'all' || payment.status === filter;
     const matchesSearch = 
       payment.user_name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -169,11 +169,11 @@ const PaymentsPage: React.FC = () => {
 
   // Расчет статистики
   const totalRevenue = payments
-    .filter(p => p.status === 'completed')
-    .reduce((sum, p) => sum + p.amount, 0);
+    .filter((p: Payment) => p.status === 'completed')
+    .reduce((sum: number, p: Payment) => sum + p.amount, 0);
 
-  const pendingPayments = payments.filter(p => p.status === 'pending').length;
-  const failedPayments = payments.filter(p => p.status === 'failed').length;
+  const pendingPayments = payments.filter((p: Payment) => p.status === 'pending').length;
+  const failedPayments = payments.filter((p: Payment) => p.status === 'failed').length;
 
   if (isLoading) {
     return (
