@@ -34,7 +34,7 @@ pip install -r requirements.txt
 
 echo.
 echo 🚀 Запуск бэкенда...
-start "Backend" cmd /k "python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+start "Backend" cmd /k "cd backend && python run.py"
 
 cd ..
 

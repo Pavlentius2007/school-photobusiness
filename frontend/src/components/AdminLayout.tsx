@@ -1,5 +1,6 @@
 import React from 'react';
 import AdminSidebar from './AdminSidebar';
+import './AdminLayout.css';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -12,12 +13,7 @@ const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
       <AdminSidebar />
       
       {/* Основной контент */}
-      <div style={{
-        flex: 1,
-        marginLeft: '280px',
-        minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)'
-      }}>
+      <div className="admin-content">
         {children}
       </div>
     </div>

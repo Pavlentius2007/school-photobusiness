@@ -14,103 +14,152 @@ const PaymentPage: React.FC = () => {
   };
 
   return (
-    <div style={{ 
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif",
-      lineHeight: 1.6,
-      color: '#1a1a1a',
-      minHeight: '100vh',
-      background: '#f8fafc'
-    }}>
-      {/* Header */}
-      <section style={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        color: 'white',
-        padding: '4rem 2rem',
-        textAlign: 'center'
-      }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h1 style={{ 
-            fontSize: '3.5rem', 
-            fontWeight: 'bold', 
-            marginBottom: '1rem',
-            background: 'linear-gradient(45deg, #fff, #f0f0f0)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent'
-          }}>
+    <div className="font-sans text-gray-800 leading-relaxed min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white py-20 px-8 text-center relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-black opacity-10"></div>
+        <div className="absolute top-0 left-0 w-full h-full">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-white opacity-5 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-white opacity-10 rounded-full"></div>
+        </div>
+        
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="inline-flex items-center px-4 py-2 bg-white bg-opacity-25 rounded-full text-sm font-medium mb-6 shadow-lg">
+            <span className="mr-2">💳</span>
+            Безопасная оплата
+          </div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
             Оплата курсов
           </h1>
-          <p style={{ 
-            fontSize: '1.25rem', 
-            marginBottom: '2rem',
-            opacity: 0.9
-          }}>
-            Удобные способы оплаты для вашего обучения
+          <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            Удобные способы оплаты для вашего обучения. Выберите подходящий вариант и начните свой путь в фотобизнесе.
           </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm opacity-80">
+            <div className="flex items-center">
+              <span className="mr-2">🔒</span>
+              Защищенные платежи
+            </div>
+            <div className="flex items-center">
+              <span className="mr-2">⚡</span>
+              Мгновенная активация
+            </div>
+            <div className="flex items-center">
+              <span className="mr-2">📱</span>
+              Мобильная оплата
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Company Information */}
-      <section style={{ padding: '4rem 2rem', background: 'white' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ 
-            textAlign: 'center', 
-            fontSize: '2.5rem', 
-            fontWeight: 'bold',
-            marginBottom: '3rem',
-            color: '#2d3748'
-          }}>
+      <section className="py-16 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center text-4xl md:text-5xl font-bold mb-12 text-gray-800">
             Информация о компании
           </h2>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '2rem',
-            marginBottom: '3rem'
-          }}>
-            <div style={{
-              background: '#f7fafc',
-              padding: '2rem',
-              borderRadius: '15px',
-              border: '1px solid #e2e8f0'
-            }}>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: 'bold', 
-                marginBottom: '1rem',
-                color: '#2d3748'
-              }}>
-                Реквизиты
-              </h3>
-              <div style={{ color: '#4a5568' }}>
-                <p><strong>ИП:</strong> Иванов Иван Иванович</p>
-                <p><strong>ОГРНИП:</strong> 123456789012345</p>
-                <p><strong>ИНН:</strong> 123456789012</p>
-                <p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p>
-                <p><strong>Email:</strong> info@fotobiznes.ru</p>
-                <p><strong>Телефон:</strong> +7 (953) 862-85-81</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-white text-xl">🏢</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  Реквизиты
+                </h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">👤</span>
+                  <div>
+                    <div className="text-sm text-gray-500">ИП</div>
+                    <div className="font-medium text-gray-800">Иванов Иван Иванович</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">📋</span>
+                  <div>
+                    <div className="text-sm text-gray-500">ОГРНИП</div>
+                    <div className="font-medium text-gray-800">123456789012345</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">🆔</span>
+                  <div>
+                    <div className="text-sm text-gray-500">ИНН</div>
+                    <div className="font-medium text-gray-800">123456789012</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">📍</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Адрес</div>
+                    <div className="font-medium text-gray-800">г. Москва, ул. Примерная, д. 1</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">📧</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Email</div>
+                    <div className="font-medium text-gray-800">info@fotobiznes.ru</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2">
+                  <span className="text-gray-400 mr-3">📱</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Телефон</div>
+                    <div className="font-medium text-gray-800">+7 (953) 862-85-81</div>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div style={{
-              background: '#f7fafc',
-              padding: '2rem',
-              borderRadius: '15px',
-              border: '1px solid #e2e8f0'
-            }}>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                fontWeight: 'bold', 
-                marginBottom: '1rem',
-                color: '#2d3748'
-              }}>
-                Банковские реквизиты
-              </h3>
-              <div style={{ color: '#4a5568' }}>
-                <p><strong>Банк:</strong> ПАО Сбербанк</p>
-                <p><strong>Расчетный счет:</strong> 40702810123456789012</p>
-                <p><strong>Корр. счет:</strong> 30101810400000000225</p>
-                <p><strong>БИК:</strong> 044525225</p>
-                <p><strong>Назначение платежа:</strong> Оплата за обучение</p>
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-white text-xl">🏦</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-800">
+                  Банковские реквизиты
+                </h3>
+              </div>
+              <div className="space-y-4">
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">🏛️</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Банк</div>
+                    <div className="font-medium text-gray-800">ПАО Сбербанк</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">💳</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Расчетный счет</div>
+                    <div className="font-medium text-gray-800 font-mono">40702810123456789012</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">🏦</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Корр. счет</div>
+                    <div className="font-medium text-gray-800 font-mono">30101810400000000225</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2 border-b border-gray-100">
+                  <span className="text-gray-400 mr-3">🔢</span>
+                  <div>
+                    <div className="text-sm text-gray-500">БИК</div>
+                    <div className="font-medium text-gray-800 font-mono">044525225</div>
+                  </div>
+                </div>
+                <div className="flex items-center py-2">
+                  <span className="text-gray-400 mr-3">📝</span>
+                  <div>
+                    <div className="text-sm text-gray-500">Назначение платежа</div>
+                    <div className="font-medium text-gray-800">Оплата за обучение</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -118,82 +167,41 @@ const PaymentPage: React.FC = () => {
       </section>
 
       {/* Payment Methods */}
-      <section style={{ padding: '4rem 2rem', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ 
-            textAlign: 'center', 
-            fontSize: '2.5rem', 
-            fontWeight: 'bold',
-            marginBottom: '3rem',
-            color: '#2d3748'
-          }}>
+      <section className="py-16 px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center text-4xl md:text-5xl font-bold mb-12 text-gray-800">
             Способы оплаты
           </h2>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', 
-            gap: '2rem' 
-          }}>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: '📱',
                 title: 'QR-код',
                 description: 'Оплатите курсы через QR-код в любом банковском приложении. Быстро, удобно и безопасно.',
-                gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                gradient: 'from-blue-600 to-purple-700'
               },
               {
                 icon: '🏦',
                 title: 'Банковский перевод',
                 description: 'Классический способ оплаты через банковский перевод по реквизитам компании.',
-                gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+                gradient: 'from-pink-500 to-red-500'
               },
               {
                 icon: '💳',
                 title: 'Рассрочка от Сбербанка',
                 description: 'Оформите рассрочку на обучение без переплат и первоначального взноса.',
-                gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+                gradient: 'from-pink-400 to-yellow-400'
               }
             ].map((method, index) => (
-              <div key={index} style={{
-                background: 'white',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.12)',
-                transition: 'transform 0.3s, box-shadow 0.3s'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px)';
-                e.currentTarget.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 30px rgba(0,0,0,0.12)';
-              }}
-              >
-                <div style={{
-                  background: method.gradient,
-                  height: '150px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'white'
-                }}>
-                  <div style={{ fontSize: '3rem' }}>{method.icon}</div>
+              <div key={index} className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className={`bg-gradient-to-br ${method.gradient} h-36 flex items-center justify-center text-white`}>
+                  <div className="text-5xl">{method.icon}</div>
                 </div>
-                <div style={{ padding: '2rem' }}>
-                  <h3 style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 'bold',
-                    marginBottom: '1rem',
-                    color: '#2d3748'
-                  }}>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-800">
                     {method.title}
                   </h3>
-                  <p style={{ 
-                    color: '#4a5568',
-                    marginBottom: '1.5rem',
-                    lineHeight: '1.6'
-                  }}>
+                  <p className="text-gray-600 mb-6 leading-relaxed">
                     {method.description}
                   </p>
                 </div>
@@ -204,76 +212,24 @@ const PaymentPage: React.FC = () => {
       </section>
 
       {/* Contact Section */}
-      <section style={{ padding: '4rem 2rem', background: 'white' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: 'bold',
-            marginBottom: '2rem',
-            color: '#2d3748'
-          }}>
+      <section className="py-16 px-8 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-800">
             Нужна помощь с оплатой?
           </h2>
-          <p style={{ 
-            fontSize: '1.25rem',
-            marginBottom: '3rem',
-            color: '#4a5568'
-          }}>
+          <p className="text-xl mb-12 text-gray-600">
             Наши специалисты помогут выбрать оптимальный способ оплаты и ответят на все вопросы
           </p>
-          <div style={{ 
-            display: 'flex', 
-            gap: '2rem', 
-            justifyContent: 'center',
-            flexWrap: 'wrap'
-          }}>
+          <div className="flex flex-col sm:flex-row gap-8 justify-center">
             <button 
               onClick={openTelegramPayment}
-              style={{
-                background: 'linear-gradient(45deg, #0088cc, #0077b3)',
-                color: 'white',
-                border: 'none',
-                padding: '1rem 2rem',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(0, 136, 204, 0.4)',
-                transition: 'transform 0.3s, box-shadow 0.3s'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 136, 204, 0.6)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 136, 204, 0.4)';
-              }}
+              className="bg-gradient-to-r from-blue-500 to-blue-600 text-white border-none py-4 px-8 text-lg font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               💬 Написать в Telegram
             </button>
             <button 
               onClick={openPhoneCall}
-              style={{
-                background: 'linear-gradient(45deg, #ff6b6b, #ee5a52)',
-                color: 'white',
-                border: 'none',
-                padding: '1rem 2rem',
-                fontSize: '1.1rem',
-                fontWeight: 'bold',
-                borderRadius: '50px',
-                cursor: 'pointer',
-                boxShadow: '0 4px 15px rgba(238, 90, 82, 0.4)',
-                transition: 'transform 0.3s, box-shadow 0.3s'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(238, 90, 82, 0.6)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(238, 90, 82, 0.4)';
-              }}
+              className="bg-gradient-to-r from-red-500 to-red-600 text-white border-none py-4 px-8 text-lg font-bold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               📞 Позвонить
             </button>
@@ -282,22 +238,12 @@ const PaymentPage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section style={{ padding: '4rem 2rem', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ 
-            textAlign: 'center', 
-            fontSize: '2.5rem', 
-            fontWeight: 'bold',
-            marginBottom: '3rem',
-            color: '#2d3748'
-          }}>
+      <section className="py-16 px-8 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-center text-4xl md:text-5xl font-bold mb-12 text-gray-800">
             Преимущества нашей системы оплаты
           </h2>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '2rem' 
-          }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 icon: '🔒',
@@ -320,24 +266,12 @@ const PaymentPage: React.FC = () => {
                 description: 'Множество способов оплаты для вашего комфорта'
               }
             ].map((feature, index) => (
-              <div key={index} style={{
-                background: 'white',
-                padding: '2rem',
-                borderRadius: '15px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-                textAlign: 'center',
-                transition: 'transform 0.3s, box-shadow 0.3s'
-              }}>
-                <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{feature.icon}</div>
-                <h3 style={{ 
-                  fontSize: '1.5rem', 
-                  fontWeight: 'bold', 
-                  marginBottom: '1rem',
-                  color: '#2d3748'
-                }}>
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                <div className="text-5xl mb-4">{feature.icon}</div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">
                   {feature.title}
                 </h3>
-                <p style={{ color: '#4a5568' }}>{feature.description}</p>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>

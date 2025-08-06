@@ -74,12 +74,12 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="bg-gradient-to-r from-blue-600 to-purple-600 text-white sticky top-0 z-50 shadow-lg">
+    <header className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-700 text-white sticky top-0 z-50 shadow-lg backdrop-blur-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Логотип */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="text-2xl font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent group-hover:from-yellow-300 group-hover:to-orange-300 transition-all duration-300">
               📸 {settings.siteName}
             </div>
           </Link>
@@ -88,35 +88,47 @@ const Header: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
-                isActive('/') ? 'opacity-100' : 'opacity-80'
+              className={`text-white font-medium transition-all duration-300 hover:text-yellow-300 relative ${
+                isActive('/') ? 'text-yellow-300' : 'hover:scale-105'
               }`}
             >
               Главная
+              {isActive('/') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-300 rounded-full"></div>
+              )}
             </Link>
             <Link 
               to="/courses" 
-              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
-                isActive('/courses') ? 'opacity-100' : 'opacity-80'
+              className={`text-white font-medium transition-all duration-300 hover:text-yellow-300 relative ${
+                isActive('/courses') ? 'text-yellow-300' : 'hover:scale-105'
               }`}
             >
               Курсы
+              {isActive('/courses') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-300 rounded-full"></div>
+              )}
             </Link>
             <Link 
               to="/about" 
-              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
-                isActive('/about') ? 'opacity-100' : 'opacity-80'
+              className={`text-white font-medium transition-all duration-300 hover:text-yellow-300 relative ${
+                isActive('/about') ? 'text-yellow-300' : 'hover:scale-105'
               }`}
             >
               О нас
+              {isActive('/about') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-300 rounded-full"></div>
+              )}
             </Link>
             <Link 
               to="/payment" 
-              className={`text-white font-medium transition-opacity duration-300 hover:opacity-80 ${
-                isActive('/payment') ? 'opacity-100' : 'opacity-80'
+              className={`text-white font-medium transition-all duration-300 hover:text-yellow-300 relative ${
+                isActive('/payment') ? 'text-yellow-300' : 'hover:scale-105'
               }`}
             >
               Оплата
+              {isActive('/payment') && (
+                <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-yellow-300 rounded-full"></div>
+              )}
             </Link>
           </div>
 
@@ -126,15 +138,15 @@ const Header: React.FC = () => {
               <div className="relative user-menu">
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="user-toggle bg-white bg-opacity-10 text-white border border-white border-opacity-30 px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-opacity-20 flex items-center space-x-2"
+                  className="user-toggle bg-white/10 backdrop-blur-sm text-white border border-white/30 px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-white/20 hover:scale-105 flex items-center space-x-2"
                 >
                   <span>👤</span>
                   <span className="hidden lg:inline">{user?.full_name}</span>
-                  <span>▼</span>
+                  <span className={`transition-transform duration-300 ${showUserMenu ? 'rotate-180' : ''}`}>▼</span>
                 </button>
                 
                 {showUserMenu && (
-                  <div className="absolute top-full right-0 mt-2 bg-white rounded-lg shadow-xl p-4 min-w-48 z-50">
+                  <div className="absolute top-full right-0 mt-2 bg-white rounded-2xl shadow-xl p-4 min-w-48 z-50 animate-fade-in">
                     <div className="pb-2 border-b border-gray-200 mb-2">
                       <div className="text-sm font-bold text-gray-800">
                         {user?.full_name}
@@ -149,7 +161,7 @@ const Header: React.FC = () => {
                         setShowUserMenu(false);
                         navigate(getDashboardLink());
                       }}
-                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200"
+                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
                     >
                       📊 Панель управления
                     </button>
@@ -159,7 +171,7 @@ const Header: React.FC = () => {
                         setShowUserMenu(false);
                         navigate('/profile');
                       }}
-                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors duration-200"
+                      className="w-full text-left px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
                     >
                       👤 Профиль
                     </button>
@@ -169,7 +181,7 @@ const Header: React.FC = () => {
                         setShowUserMenu(false);
                         handleLogout();
                       }}
-                      className="w-full text-left px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded transition-colors duration-200"
+                      className="w-full text-left px-2 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors duration-200"
                     >
                       🚪 Выйти
                     </button>
@@ -179,12 +191,12 @@ const Header: React.FC = () => {
             ) : (
               <div className="flex items-center space-x-3">
                 <Link to="/login">
-                  <button className="bg-transparent text-white border-2 border-white px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-white hover:text-blue-600">
+                  <button className="bg-transparent text-white border-2 border-white px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-300 hover:bg-white hover:text-blue-600 hover:scale-105">
                     Войти
                   </button>
                 </Link>
                 <Link to="/register">
-                  <button className="bg-white text-blue-600 border-none px-4 py-2 rounded-full cursor-pointer font-bold transition-all duration-300 hover:bg-gray-100">
+                  <button className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white border-none px-4 py-2 rounded-full cursor-pointer font-bold transition-all duration-300 hover:from-yellow-500 hover:to-orange-600 hover:scale-105 shadow-lg">
                     Регистрация
                   </button>
                 </Link>
@@ -196,7 +208,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
-              className="mobile-toggle text-white p-2 rounded-md hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+              className="mobile-toggle text-white p-2 rounded-md hover:bg-white/10 transition-colors duration-200"
               aria-label="Открыть меню"
             >
               <div className="w-6 h-6 flex flex-col justify-center items-center">
@@ -214,7 +226,7 @@ const Header: React.FC = () => {
             <Link 
               to="/" 
               className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
-                isActive('/') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+                isActive('/') ? 'bg-white/20' : 'hover:bg-white/10'
               }`}
             >
               Главная
@@ -222,7 +234,7 @@ const Header: React.FC = () => {
             <Link 
               to="/courses" 
               className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
-                isActive('/courses') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+                isActive('/courses') ? 'bg-white/20' : 'hover:bg-white/10'
               }`}
             >
               Курсы
@@ -230,7 +242,7 @@ const Header: React.FC = () => {
             <Link 
               to="/about" 
               className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
-                isActive('/about') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+                isActive('/about') ? 'bg-white/20' : 'hover:bg-white/10'
               }`}
             >
               О нас
@@ -238,7 +250,7 @@ const Header: React.FC = () => {
             <Link 
               to="/payment" 
               className={`block px-3 py-3 text-white font-medium rounded-lg transition-colors duration-200 ${
-                isActive('/payment') ? 'bg-white bg-opacity-20' : 'hover:bg-white hover:bg-opacity-10'
+                isActive('/payment') ? 'bg-white/20' : 'hover:bg-white/10'
               }`}
             >
               Оплата
@@ -246,8 +258,8 @@ const Header: React.FC = () => {
             
             {/* Мобильное пользовательское меню */}
             {isAuthenticated ? (
-              <div className="border-t border-white border-opacity-20 pt-4 mt-4">
-                <div className="px-3 py-2 text-sm text-white opacity-80">
+              <div className="border-t border-white/20 pt-4 mt-4">
+                <div className="px-3 py-2 text-sm text-white/80">
                   {user?.full_name} ({getRoleDisplayName(user?.role || '')})
                 </div>
                 <button
@@ -255,7 +267,7 @@ const Header: React.FC = () => {
                     setShowMobileMenu(false);
                     navigate(getDashboardLink());
                   }}
-                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white/10 transition-colors duration-200"
                 >
                   📊 Панель управления
                 </button>
@@ -264,7 +276,7 @@ const Header: React.FC = () => {
                     setShowMobileMenu(false);
                     navigate('/profile');
                   }}
-                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors duration-200"
+                  className="w-full text-left px-3 py-3 text-white font-medium rounded-lg hover:bg-white/10 transition-colors duration-200"
                 >
                   👤 Профиль
                 </button>
@@ -273,20 +285,20 @@ const Header: React.FC = () => {
                     setShowMobileMenu(false);
                     handleLogout();
                   }}
-                  className="w-full text-left px-3 py-3 text-red-200 font-medium rounded-lg hover:bg-red-500 hover:bg-opacity-20 transition-colors duration-200"
+                  className="w-full text-left px-3 py-3 text-red-200 font-medium rounded-lg hover:bg-red-500/20 transition-colors duration-200"
                 >
                   🚪 Выйти
                 </button>
               </div>
             ) : (
-              <div className="border-t border-white border-opacity-20 pt-4 mt-4 space-y-2">
+              <div className="border-t border-white/20 pt-4 mt-4 space-y-2">
                 <Link to="/login">
                   <button className="w-full bg-transparent text-white border-2 border-white px-4 py-3 rounded-lg cursor-pointer font-medium transition-all duration-300 hover:bg-white hover:text-blue-600">
                     Войти
                   </button>
                 </Link>
                 <Link to="/register">
-                  <button className="w-full bg-white text-blue-600 border-none px-4 py-3 rounded-lg cursor-pointer font-bold transition-all duration-300 hover:bg-gray-100">
+                  <button className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-white border-none px-4 py-3 rounded-lg cursor-pointer font-bold transition-all duration-300 hover:from-yellow-500 hover:to-orange-600">
                     Регистрация
                   </button>
                 </Link>

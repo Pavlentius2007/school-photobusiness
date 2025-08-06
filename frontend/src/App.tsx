@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import ErrorNotification from './components/ErrorNotification';
 import HomePage from './pages/HomePage';
 import CoursesPage from './pages/CoursesPage';
+import AboutPage from './pages/AboutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
@@ -66,14 +67,7 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                   
-                  <Route path="/about" element={
-                    <div style={{ padding: '4rem 2rem', textAlign: 'center' }}>
-                      <h1 style={{ fontSize: '3rem', marginBottom: '2rem' }}>О нас</h1>
-                      <p style={{ fontSize: '1.25rem', maxWidth: '800px', margin: '0 auto' }}>
-                        Страница "О нас" находится в разработке...
-                      </p>
-                    </div>
-                  } />
+                  <Route path="/about" element={<AboutPage />} />
                   <Route path="/payment" element={<PaymentPage />} />
                   
                   {/* Защищенные маршруты - Админ-панель */}
